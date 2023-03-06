@@ -3,7 +3,6 @@ import * as React from 'react';
 import { useState } from "react";
 
 
-
 export default function App() {
   const [textInput, setTextInput] = useState("");
   const [listItems, setListItems] = useState([]);
@@ -65,7 +64,6 @@ export default function App() {
             </button>
 
         </div>
-      
     </div>
   );
 }
