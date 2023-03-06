@@ -1,25 +1,75 @@
-import logo from './logo.svg';
 import './App.css';
+import * as React from 'react';
+import { useState } from "react";
 
-function App() {
+
+
+export default function App() {
+  const [textInput, setTextInput] = useState("");
+  const [listItems, setListItems] = useState([]);
+
+  const [trnInput, setTrnInput] = useState("");
+  const [trnlistItems, setTrnListItems] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" >
+        
+        <h1 class = "App-title">
+           Build a workflow
+        </h1>
+        <div className = "App-row">
+          <div class = "column">
+
+            <div>
+            Add status:
+
+              <input type="text" value={textInput} onChange={(e) => setTextInput(e.target.value)} />
+              
+              <button onClick={() => {
+                setListItems([...listItems, textInput]);
+                setTextInput("");
+              }}>Add </button>
+              <ul>
+                {listItems.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+
+          <div class = "column">
+            <p className="App-trn">
+              Add transition:
+            </p>
+            name:
+            <input type="text" value={trnInput} onChange={(e) => setTrnInput(e.target.value)} />
+              
+              <button onClick={() => {
+                setTrnListItems([...trnlistItems, trnInput]);
+                setTrnInput("");
+              }}>Add </button>
+              <ul>
+                {trnlistItems.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            
+
+            From:
+            To:
+
+          </div>
+        
+            <button className="App-reset_btn" type = "reset">
+              Reset
+            </button>
+
+        </div>
+      
     </div>
   );
 }
 
-export default App;
+
+
+
